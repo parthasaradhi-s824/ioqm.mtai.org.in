@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IOQM & RMO Study Portal</title>
-    <!-- പ്രത്യേക CSS ഫയൽ ഇവിടെ ലിങ്ക് ചെയ്തിരിക്കുന്നു -->
     <link rel="stylesheet" href="dpp.css">
     
     <style>
@@ -35,7 +34,6 @@
         footer { text-align: center; padding: 15px; color: #64748b; margin-top: auto; }
     </style>
 
-    <!-- Firebase Online Database SDKs -->
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
 </head>
@@ -52,10 +50,8 @@
 
     <div class="container">
         
-        <!-- Files Section -->
         <div id="filesSection" class="section active">
             
-            <!-- DPP Day 2 Section -->
             <div class="dpp-section" style="background: #f9f9f9; padding: 20px; border-radius: 10px; margin-bottom: 25px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
                 <h2 style="font-size: 1.3rem; margin-bottom: 15px;">Daily Practice Paper (DPP) - Day 2</h2>
                 <p class="dpp-question" style="font-size: 17px; margin-bottom: 15px; line-height: 1.8;">
@@ -106,7 +102,6 @@
                 </ul>
             </div>
 
-            <!-- PDF Viewer Section -->
             <div id="pdfViewerContainer">
                 <div class="viewer-controls">
                     <button class="action-btn back-btn" onclick="closePdf()">⬅ Back to Files List</button>
@@ -117,7 +112,6 @@
             </div>
         </div>
 
-        <!-- Dates Section -->
         <div id="datesSection" class="section">
             <h2>Important Examination Dates</h2>
             <div class="date-card"><h3>IOQM (PRMO)</h3><p>📅 September 6, 2026</p></div>
@@ -127,7 +121,6 @@
             <div class="date-card"><h3>IMO</h3><p>📅 July 16 to July 26, 2027</p></div>
         </div>
 
-        <!-- Live Doubts Forum Section -->
         <div id="doubtsSection" class="section">
             <h2>Live Doubt Discussion Forum</h2>
             <div style="background: #f8fafc; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0; margin-bottom: 20px;">
@@ -149,6 +142,7 @@
         const firebaseConfig = {
             apiKey: "AIzaSyD73TpbE9kcFVz_uSgK1Bi5NuMj102UUxc",
             authDomain: "ioqm-portal.firebaseapp.com",
+            databaseURL: "https://ioqm-portal-default-rtdb.firebaseio.com",
             projectId: "ioqm-portal",
             storageBucket: "ioqm-portal.firebasestorage.app",
             messagingSenderId: "955045836214",
