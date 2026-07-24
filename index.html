@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IOQM & RMO Study Portal</title>
+    <!-- പ്രത്യേക CSS ഫയൽ ഇവിടെ ലിങ്ക് ചെയ്തിരിക്കുന്നു -->
     <link rel="stylesheet" href="dpp.css">
     
     <style>
@@ -41,13 +42,16 @@
         <nav>
             <button id="navFiles" class="active" onclick="showTab('files')">Files</button>
             <button id="navDates" onclick="showTab('dates')">Dates</button>
+            <button id="navDoubts" onclick="showTab('doubts')">Doubts</button>
         </nav>
     </header>
 
     <div class="container">
         
+        <!-- Files Section -->
         <div id="filesSection" class="section active">
             
+            <!-- DPP Day 2 Section -->
             <div class="dpp-section" style="background: #f9f9f9; padding: 20px; border-radius: 10px; margin-bottom: 25px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
                 <h2 style="font-size: 1.3rem; margin-bottom: 15px;">Daily Practice Paper (DPP) - Day 2</h2>
                 <p class="dpp-question" style="font-size: 17px; margin-bottom: 15px; line-height: 1.8;">
@@ -98,6 +102,7 @@
                 </ul>
             </div>
 
+            <!-- PDF Viewer Section -->
             <div id="pdfViewerContainer">
                 <div class="viewer-controls">
                     <button class="action-btn back-btn" onclick="closePdf()">⬅ Back to Files List</button>
@@ -108,6 +113,7 @@
             </div>
         </div>
 
+        <!-- Dates Section -->
         <div id="datesSection" class="section">
             <h2>Important Examination Dates</h2>
             <div class="date-card"><h3>IOQM (PRMO)</h3><p>📅 September 6, 2026</p></div>
@@ -115,6 +121,17 @@
             <div class="date-card"><h3>INMO</h3><p>📅 January 17, 2027</p></div>
             <div class="date-card"><h3>IMOTC</h3><p>📅 May-June, 2027</p></div>
             <div class="date-card"><h3>IMO</h3><p>📅 July 16 to July 26, 2027</p></div>
+        </div>
+
+        <!-- Doubts Section -->
+        <div id="doubtsSection" class="section">
+            <h2>Doubt Discussion Forum</h2>
+            <div style="background: #f8fafc; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0; margin-bottom: 20px;">
+                <textarea id="doubtInput" placeholder="തങ്ങളുടെ സംശയം ഇവിടെ ടൈപ്പ് ചെയ്യുക..." style="width: 100%; height: 85px; padding: 12px; border: 1px solid #cbd5e1; border-radius: 6px; resize: vertical; font-size: 1rem; font-family: inherit; margin-bottom: 10px;"></textarea>
+                <button onclick="addDoubt()" style="background-color: #2563eb; color: white; border: none; padding: 10px 22px; font-weight: bold; border-radius: 6px; cursor: pointer;">Post Doubt</button>
+            </div>
+            
+            <div id="doubtsContainer"></div>
         </div>
 
     </div>
@@ -125,8 +142,11 @@
         function showTab(tabName) {
             document.getElementById('filesSection').classList.remove('active');
             document.getElementById('datesSection').classList.remove('active');
+            document.getElementById('doubtsSection').classList.remove('active');
+            
             document.getElementById('navFiles').classList.remove('active');
             document.getElementById('navDates').classList.remove('active');
+            document.getElementById('navDoubts').classList.remove('active');
 
             if (tabName === 'files') {
                 document.getElementById('filesSection').classList.add('active');
@@ -134,6 +154,10 @@
             } else if (tabName === 'dates') {
                 document.getElementById('datesSection').classList.add('active');
                 document.getElementById('navDates').classList.add('active');
+            } else if (tabName === 'doubts') {
+                document.getElementById('doubtsSection').classList.add('active');
+                document.getElementById('navDoubts').classList.add('active');
+                renderDoubts();
             }
         }
 
@@ -168,6 +192,102 @@
             } else {
                 message.innerText = '';
             }
+        }
+
+        /* Doubts Discussion Logic */
+        function getDoubts() {
+            return JSON.parse(localStorage.getItem('ioqm_doubts') || '[]');
+        }
+
+        function saveDoubts(doubts) {
+            localStorage.setItem('ioqm_doubts', JSON.stringify(doubts));
+        }
+
+        function addDoubt() {
+            const input = document.getElementById('doubtInput');
+            const text = input.value.trim();
+            if(!text) return;
+            
+            const doubts = getDoubts();
+            doubts.unshift({
+                id: Date.now(),
+                text: text,
+                time: new Date().toLocaleString(),
+                replies: []
+            });
+            saveDoubts(doubts);
+            input.value = '';
+            renderDoubts();
+        }
+
+        function addReply(doubtId) {
+            const input = document.getElementById('replyInput-' + doubtId);
+            const text = input.value.trim();
+            if(!text) return;
+            
+            const doubts = getDoubts();
+            const doubt = doubts.find(d => d.id === doubtId);
+            if(doubt) {
+                doubt.replies.push({
+                    id: Date.now(),
+                    text: text,
+                    time: new Date().toLocaleString()
+                });
+                saveDoubts(doubts);
+                renderDoubts();
+            }
+        }
+
+        function toggleReplyForm(doubtId) {
+            const form = document.getElementById('replyForm-' + doubtId);
+            if (form) {
+                form.style.display = form.style.display === 'none' || form.style.display === '' ? 'block' : 'none';
+            }
+        }
+
+        function renderDoubts() {
+            const container = document.getElementById('doubtsContainer');
+            if(!container) return;
+            const doubts = getDoubts();
+            
+            if(doubts.length === 0) {
+                container.innerHTML = '<p style="color: #64748b; font-style: italic; text-align: center; padding: 20px;">സംശയങ്ങളൊന്നും ഇതുവരെ പോസ്റ്റ് ചെയ്തിട്ടില്ല.</p>';
+                return;
+            }
+
+            container.innerHTML = doubts.map(d => `
+                <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 15px; margin-bottom: 15px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                    <p style="font-size: 1rem; color: #1e293b; white-space: pre-line; margin-bottom: 8px;">${escapeHtml(d.text)}</p>
+                    <div style="font-size: 0.78rem; color: #94a3b8; margin-bottom: 10px;">${d.time}</div>
+                    
+                    <button onclick="toggleReplyForm(${d.id})" style="background: none; border: none; color: #2563eb; font-weight: bold; cursor: pointer; padding: 0; font-size: 0.88rem;">💬 Reply</button>
+                    
+                    <div id="replyForm-${d.id}" style="display: none; margin-top: 10px; padding-left: 10px; border-left: 2px solid #3b82f6;">
+                        <textarea id="replyInput-${d.id}" placeholder="മറുപടി ടൈപ്പ് ചെയ്യുക..." style="width: 100%; height: 60px; padding: 8px; border: 1px solid #cbd5e1; border-radius: 4px; resize: vertical; font-size: 0.9rem; font-family: inherit; margin-bottom: 6px;"></textarea>
+                        <button onclick="addReply(${d.id})" style="background-color: #16a34a; color: white; border: none; padding: 6px 14px; font-size: 0.85rem; font-weight: bold; border-radius: 4px; cursor: pointer;">Submit Reply</button>
+                    </div>
+
+                    ${d.replies.length > 0 ? `
+                        <div style="margin-top: 12px; padding-left: 12px; border-left: 3px solid #e2e8f0;">
+                            ${d.replies.map(r => `
+                                <div style="background: #f8fafc; padding: 10px; border-radius: 6px; margin-top: 8px; border: 1px solid #f1f5f9;">
+                                    <p style="font-size: 0.93rem; color: #334155; white-space: pre-line;">${escapeHtml(r.text)}</p>
+                                    <div style="font-size: 0.75rem; color: #94a3b8; margin-top: 4px;">${r.time}</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    ` : ''}
+                </div>
+            `).join('');
+        }
+
+        function escapeHtml(text) {
+            return text
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
         }
     </script>
 </body>
