@@ -44,45 +44,47 @@
 
     <div class="container">
         
+        <!-- Files Section -->
         <div id="filesSection" class="section active">
             <div id="filesList">
                 <h2>Study Materials & DPPs</h2>
                 <ul class="file-list">
-                    <li class="file-item" onclick="openPdf('DPP PDF BASIC ALGEBRA MOUDLE 1 (2).pdf', 'Basic Algebra (Module 1 - Part 1)')">
+                    <li class="file-item" onclick="openPdf('file1.pdf', 'Basic Algebra (Module 1 - Part 1)')">
                         <span class="file-title">📄 Basic Algebra (Module 1 - Part 1)</span>
                         <button class="open-btn">Open File</button>
                     </li>
-                    <li class="file-item" onclick="openPdf('DPP PDF  MODULE 1 PART 2 POLYNOMIALS (1).pdf', 'Polynomials (Module 1 - Part 2)')">
+                    <li class="file-item" onclick="openPdf('file2.pdf', 'Polynomials (Module 1 - Part 2)')">
                         <span class="file-title">📄 Polynomials (Module 1 - Part 2)</span>
                         <button class="open-btn">Open File</button>
                     </li>
-                    <li class="file-item" onclick="openPdf('DPP MODULE 1 PART 3 SETS AND FUNCTIONS.pdf', 'Sets and Functions (Module 1 - Part 3)')">
+                    <li class="file-item" onclick="openPdf('file3.pdf', 'Sets and Functions (Module 1 - Part 3)')">
                         <span class="file-title">📄 Sets and Functions (Module 1 - Part 3)</span>
                         <button class="open-btn">Open File</button>
                     </li>
-                    <li class="file-item" onclick="openPdf('DPP PDF NUMBER THEORY MODULE 2 - PART 1 (1).pdf', 'Number Theory 1 (Module 2 - Part 1)')">
+                    <li class="file-item" onclick="openPdf('file4.pdf', 'Number Theory 1 (Module 2 - Part 1)')">
                         <span class="file-title">📄 Number Theory 1 (Module 2 - Part 1)</span>
                         <button class="open-btn">Open File</button>
                     </li>
-                    <li class="file-item" onclick="openPdf('DPP PDF NUMBER THEORY MODULE 2 - PART 2 (1).pdf', 'Number Theory 2 (Module 2 - Part 2)')">
+                    <li class="file-item" onclick="openPdf('file5.pdf', 'Number Theory 2 (Module 2 - Part 2)')">
                         <span class="file-title">📄 Number Theory 2 (Module 2 - Part 2)</span>
                         <button class="open-btn">Open File</button>
                     </li>
-                    <li class="file-item" onclick="openPdf('PLANE GEOMETRY MODULE 3 PART 1 (1).pdf', 'Plane Geometry 1 (Module 3 - Part 1)')">
+                    <li class="file-item" onclick="openPdf('file6.pdf', 'Plane Geometry 1 (Module 3 - Part 1)')">
                         <span class="file-title">📄 Plane Geometry 1 (Module 3 - Part 1)</span>
                         <button class="open-btn">Open File</button>
                     </li>
-                    <li class="file-item" onclick="openPdf('MODULE 3 PART 2 PLANE GEOMETRY (CIRCLES & POLYNOMIALS ).pdf', 'Plane Geometry 2 (Module 3 - Part 2)')">
+                    <li class="file-item" onclick="openPdf('file7.pdf', 'Plane Geometry 2 (Module 3 - Part 2)')">
                         <span class="file-title">📄 Plane Geometry 2 (Module 3 - Part 2)</span>
                         <button class="open-btn">Open File</button>
                     </li>
-                    <li class="file-item" onclick="openPdf('DPP PDF _MODULE 3 PART 3 TRIGNOMETRY.pdf', 'Trigonometry (Module 3 - Part 3)')">
+                    <li class="file-item" onclick="openPdf('file8.pdf', 'Trigonometry (Module 3 - Part 3)')">
                         <span class="file-title">📄 Trigonometry (Module 3 - Part 3)</span>
                         <button class="open-btn">Open File</button>
                     </li>
                 </ul>
             </div>
 
+            <!-- PDF Viewer Section -->
             <div id="pdfViewerContainer">
                 <div class="viewer-controls">
                     <button class="action-btn back-btn" onclick="closePdf()">⬅ Back to Files List</button>
@@ -93,6 +95,7 @@
             </div>
         </div>
 
+        <!-- Dates Section -->
         <div id="datesSection" class="section">
             <h2>Important Examination Dates</h2>
             <div class="date-card"><h3>IOQM (PRMO)</h3><p>📅 September 6, 2026</p></div>
@@ -125,12 +128,8 @@
         function openPdf(filePath, fileTitle) {
             document.getElementById('filesList').style.display = 'none';
             document.getElementById('pdfViewerContainer').style.display = 'block';
-            
-            // Encode spaces and special characters for proper URL loading
-            var encodedPath = encodeURIComponent(filePath);
-            
-            document.getElementById('pdfFrame').src = encodedPath;
-            document.getElementById('downloadLink').href = encodedPath;
+            document.getElementById('pdfFrame').src = filePath;
+            document.getElementById('downloadLink').href = filePath;
             document.getElementById('currentFileName').innerText = fileTitle;
         }
 
