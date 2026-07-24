@@ -5,210 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IOQM & RMO Study Materials</title>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: #f4f7f6;
-            color: #333;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        /* Header Navigation */
-        header {
-            background-color: #1e3a8a;
-            color: white;
-            padding: 15px 20px;
-            text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        header h1 {
-            font-size: 1.5rem;
-            margin-bottom: 12px;
-        }
-
-        nav {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-        }
-
-        nav button {
-            background-color: #3b82f6;
-            color: white;
-            border: none;
-            padding: 10px 25px;
-            font-size: 1rem;
-            font-weight: bold;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        nav button:hover, nav button.active {
-            background-color: #1d4ed8;
-            box-shadow: 0 0 8px rgba(255,255,255,0.4);
-        }
-
-        /* Container */
-        .container {
-            max-width: 900px;
-            width: 100%;
-            margin: 20px auto;
-            padding: 0 15px;
-            flex-grow: 1;
-        }
-
-        .section {
-            display: none;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-
-        .section.active {
-            display: block;
-        }
-
-        h2 {
-            color: #1e3a8a;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #e5e7eb;
-            padding-bottom: 10px;
-        }
-
-        /* Files List Style */
-        .file-list {
-            list-style: none;
-        }
-
-        .file-item {
-            background-color: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            padding: 15px 20px;
-            margin-bottom: 12px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            transition: 0.2s ease-in-out;
-        }
-
-        .file-item:hover {
-            background-color: #eff6ff;
-            border-color: #93c5fd;
-            transform: translateY(-2px);
-        }
-
-        .file-title {
-            font-weight: 600;
-            color: #1e293b;
-            font-size: 1rem;
-        }
-
-        .open-btn {
-            background-color: #2563eb;
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 0.9rem;
-        }
-
-        /* PDF Viewer Container */
-        #pdfViewerContainer {
-            display: none;
-        }
-
-        .viewer-controls {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-            background-color: #e2e8f0;
-            padding: 12px 15px;
-            border-radius: 8px;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .action-btn {
-            padding: 8px 16px;
-            font-size: 0.95rem;
-            font-weight: bold;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .back-btn {
-            background-color: #475569;
-            color: white;
-        }
-
-        .back-btn:hover {
-            background-color: #334155;
-        }
-
-        .download-btn {
-            background-color: #16a34a;
-            color: white;
-        }
-
-        .download-btn:hover {
-            background-color: #15803d;
-        }
-
-        iframe {
-            width: 100%;
-            height: 75vh;
-            border: 1px solid #cbd5e1;
-            border-radius: 8px;
-        }
-
-        /* Dates Section Style */
-        .date-card {
-            background-color: #f8fafc;
-            border-left: 5px solid #2563eb;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 0 8px 8px 0;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-        }
-
-        .date-card h3 {
-            color: #1d4ed8;
-            font-size: 1.1rem;
-            margin-bottom: 5px;
-        }
-
-        .date-card p {
-            font-size: 1rem;
-            font-weight: 500;
-            color: #475569;
-        }
-
-        footer {
-            text-align: center;
-            padding: 15px;
-            color: #64748b;
-            font-size: 0.9rem;
-            margin-top: auto;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: #f4f7f6; color: #333; display: flex; flex-direction: column; min-height: 100vh; }
+        header { background-color: #1e3a8a; color: white; padding: 15px 20px; text-align: center; }
+        header h1 { font-size: 1.5rem; margin-bottom: 12px; }
+        nav { display: flex; justify-content: center; gap: 15px; }
+        nav button { background-color: #3b82f6; color: white; border: none; padding: 10px 25px; font-size: 1rem; font-weight: bold; border-radius: 6px; cursor: pointer; }
+        nav button:hover, nav button.active { background-color: #1d4ed8; }
+        .container { max-width: 900px; width: 100%; margin: 20px auto; padding: 0 15px; flex-grow: 1; }
+        .section { display: none; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .section.active { display: block; }
+        h2 { color: #1e3a8a; margin-bottom: 20px; border-bottom: 2px solid #e5e7eb; padding-bottom: 10px; }
+        .file-list { list-style: none; }
+        .file-item { background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 15px 20px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
+        .file-item:hover { background-color: #eff6ff; border-color: #93c5fd; }
+        .file-title { font-weight: 600; color: #1e293b; }
+        .open-btn { background-color: #2563eb; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; }
+        #pdfViewerContainer { display: none; }
+        .viewer-controls { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; background-color: #e2e8f0; padding: 12px 15px; border-radius: 8px; flex-wrap: wrap; gap: 10px; }
+        .action-btn { padding: 8px 16px; font-size: 0.95rem; font-weight: bold; border: none; border-radius: 5px; cursor: pointer; text-decoration: none; }
+        .back-btn { background-color: #475569; color: white; }
+        .download-btn { background-color: #16a34a; color: white; }
+        iframe { width: 100%; height: 75vh; border: 1px solid #cbd5e1; border-radius: 8px; }
+        .date-card { background-color: #f8fafc; border-left: 5px solid #2563eb; padding: 15px; margin-bottom: 15px; border-radius: 0 8px 8px 0; }
+        .date-card h3 { color: #1d4ed8; margin-bottom: 5px; }
+        footer { text-align: center; padding: 15px; color: #64748b; margin-top: auto; }
     </style>
 </head>
 <body>
@@ -224,7 +45,6 @@
     <div class="container">
         
         <div id="filesSection" class="section active">
-            
             <div id="filesList">
                 <h2>Study Materials & DPPs</h2>
                 <ul class="file-list">
@@ -271,46 +91,22 @@
                 </div>
                 <iframe id="pdfFrame" src=""></iframe>
             </div>
-
         </div>
 
         <div id="datesSection" class="section">
             <h2>Important Examination Dates</h2>
-            
-            <div class="date-card">
-                <h3>IOQM (PRMO)</h3>
-                <p>📅 September 6, 2026</p>
-            </div>
-
-            <div class="date-card">
-                <h3>RMO</h3>
-                <p>📅 November 15, 2026</p>
-            </div>
-
-            <div class="date-card">
-                <h3>INMO</h3>
-                <p>📅 January 17, 2027</p>
-            </div>
-
-            <div class="date-card">
-                <h3>IMOTC</h3>
-                <p>📅 May-June, 2027</p>
-            </div>
-
-            <div class="date-card">
-                <h3>IMO</h3>
-                <p>📅 July 16 to July 26, 2027</p>
-            </div>
+            <div class="date-card"><h3>IOQM (PRMO)</h3><p>📅 September 6, 2026</p></div>
+            <div class="date-card"><h3>RMO</h3><p>📅 November 15, 2026</p></div>
+            <div class="date-card"><h3>INMO</h3><p>📅 January 17, 2027</p></div>
+            <div class="date-card"><h3>IMOTC</h3><p>📅 May-June, 2027</p></div>
+            <div class="date-card"><h3>IMO</h3><p>📅 July 16 to July 26, 2027</p></div>
         </div>
 
     </div>
 
-    <footer>
-        &copy; 2026 IOQM Learning Portal. All Rights Reserved.
-    </footer>
+    <footer>&copy; 2026 IOQM Learning Portal</footer>
 
     <script>
-        // Switch between Tabs (Files / Dates)
         function showTab(tabName) {
             document.getElementById('filesSection').classList.remove('active');
             document.getElementById('datesSection').classList.remove('active');
@@ -326,16 +122,18 @@
             }
         }
 
-        // Open PDF File
         function openPdf(filePath, fileTitle) {
             document.getElementById('filesList').style.display = 'none';
             document.getElementById('pdfViewerContainer').style.display = 'block';
-            document.getElementById('pdfFrame').src = filePath;
-            document.getElementById('downloadLink').href = filePath;
+            
+            // Encode spaces and special characters for proper URL loading
+            var encodedPath = encodeURIComponent(filePath);
+            
+            document.getElementById('pdfFrame').src = encodedPath;
+            document.getElementById('downloadLink').href = encodedPath;
             document.getElementById('currentFileName').innerText = fileTitle;
         }
 
-        // Back to Files List
         function closePdf() {
             document.getElementById('pdfViewerContainer').style.display = 'none';
             document.getElementById('filesList').style.display = 'block';
