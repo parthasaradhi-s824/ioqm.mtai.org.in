@@ -124,12 +124,12 @@
         <div id="doubtsSection" class="section">
             <h2>Live Doubt Discussion Forum</h2>
             <div style="background: #f8fafc; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0; margin-bottom: 20px;">
-                <textarea id="doubtInput" placeholder="തങ്ങളുടെ സംശയം ഇവിടെ ടൈപ്പ് ചെയ്യുക..." style="width: 100%; height: 85px; padding: 12px; border: 1px solid #cbd5e1; border-radius: 6px; resize: vertical; font-size: 1rem; font-family: inherit; margin-bottom: 10px;"></textarea>
+                <textarea id="doubtInput" placeholder="Type Your Doubts Here..." style="width: 100%; height: 85px; padding: 12px; border: 1px solid #cbd5e1; border-radius: 6px; resize: vertical; font-size: 1rem; font-family: inherit; margin-bottom: 10px;"></textarea>
                 <button onclick="addDoubt()" style="background-color: #2563eb; color: white; border: none; padding: 10px 22px; font-weight: bold; border-radius: 6px; cursor: pointer;">Post Doubt</button>
             </div>
             
             <div id="doubtsContainer">
-                <p style="color: #64748b; text-align: center; padding: 20px;">സംശയങ്ങൾ ലോഡ് ചെയ്യുന്നു...</p>
+                <p style="color: #64748b; text-align: center; padding: 20px;">Loading Doubts...</p>
             </div>
         </div>
 
@@ -266,7 +266,7 @@
                         <button onclick="toggleReplyForm('${key}')" style="background: none; border: none; color: #2563eb; font-weight: bold; cursor: pointer; padding: 0; font-size: 0.88rem;">💬 Reply</button>
                         
                         <div id="replyForm-${key}" style="display: none; margin-top: 10px; padding-left: 10px; border-left: 2px solid #3b82f6;">
-                            <textarea id="replyInput-${key}" placeholder="മറുപടി ടൈപ്പ് ചെയ്യുക..." style="width: 100%; height: 60px; padding: 8px; border: 1px solid #cbd5e1; border-radius: 4px; resize: vertical; font-size: 0.9rem; font-family: inherit; margin-bottom: 6px;"></textarea>
+                            <textarea id="replyInput-${key}" placeholder="Type Your Reply" style="width: 100%; height: 60px; padding: 8px; border: 1px solid #cbd5e1; border-radius: 4px; resize: vertical; font-size: 0.9rem; font-family: inherit; margin-bottom: 6px;"></textarea>
                             <button onclick="addReply('${key}')" style="background-color: #16a34a; color: white; border: none; padding: 6px 14px; font-size: 0.85rem; font-weight: bold; border-radius: 4px; cursor: pointer;">Submit Reply</button>
                         </div>
 
